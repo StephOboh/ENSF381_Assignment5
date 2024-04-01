@@ -1,0 +1,45 @@
+/*
+=========================================================
+Name        : Header.css
+Assignment  : Assignment 4
+Author(s)   : Sarah Yip (UCID: 30174831), Stephenie Oboh (UCID: 30151629)
+Submission  : March 24, 2024
+Description : Styling sheet for Header Component
+=========================================================
+*/
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .logoHeader {
+    width: 100px; /* Adjust as needed */
+    margin: 10px;
+  }
+  
+  .header h1{
+    font-size: 30px; /* Adjust as needed */
+    color: black;
+    text-align: right;
+    margin: 10px;
+  }
+  
+  .navHeader {
+    display: flex;
+    color: black;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:10px;
+
+
+  }
+  
+  .navHeader Link {
+    text-decoration: none;
+    margin: 20px;
+  }
+  

@@ -1,0 +1,30 @@
+/*
+=========================================================
+Name        : HomeMainSection.css
+Assignment  : Assignment 4
+Author(s)   : Sarah Yip (UCID: 30174831), Stephenie Oboh (UCID: 30151629)
+Submission  : March 24, 2024
+Description : Styling sheet for Home Main Section
+=========================================================
+*/
+.home-main-section{
+    margin: 10px;
+}
+.aboutUs{
+    background-color: #fff;
+}
+
+.home-main-section h2 {
+    font-size: 24px;
+    color: black;
+}
+
+.aboutUs p{
+    font-size: 18px;
+    color: black;
+}
+
+.shop-now-button Link{
+    font-size: 18px;
+}
+
