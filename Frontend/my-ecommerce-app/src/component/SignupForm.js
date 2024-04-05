@@ -10,7 +10,7 @@ Description : The signup form for a new user
 
 import React from 'react';
 
-const SignupForm = () => {
+const SignupForm = ({switchLogin}) => {
     return (
         <div>
             <h2>Signup</h2>
@@ -30,7 +30,9 @@ const SignupForm = () => {
                 <input type ="email" id ="email" name = "email" placeholder='Enter your Email8' required></input><br></br>
                 <input type ="submit">Signup</input><br></br>
             </form>
-            {/* switch to login page  */}
+            <button type ="button" onClick={switchLogin}>Switch to Login</button>
         </div>
     );
 }
+
+export default SignupForm;
