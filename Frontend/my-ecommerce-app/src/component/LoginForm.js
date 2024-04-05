@@ -15,6 +15,7 @@ const LoginForm =({switchSignup}) => {
 
     return (
         <div>
+            <h2>Login</h2>
             <form action = "add action to check inuputs here"> 
                 <label for="username">Username: </label>
                 <input type ="text" id ="username" name ="username" placeholder ="Enter your username" required></input><br></br>
