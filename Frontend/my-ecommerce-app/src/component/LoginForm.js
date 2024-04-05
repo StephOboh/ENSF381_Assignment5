@@ -7,11 +7,11 @@ Submission  : April 7, 2024
 Description : The login form for an existing user
 =========================================================
 */
+// switchSignup function will be written in the actual login page 
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
- 
 
-const LoginForm =() => {
+
+const LoginForm =({switchSignup}) => {
 
     return (
         <div>
@@ -22,10 +22,7 @@ const LoginForm =() => {
                 <input type ="password" id ="password" name = "password" placeholder='Enter your password' required></input><br></br>
                 <input type ="submit">Login</input><br></br>
             </form>
-            {/* change to signup as form not a link
-            when button is pressed should hid the login in form 
-            and display the signup form instead */}
-            <Link to="/Signup"><button type ="button">Switch to Signup</button></Link> 
+            <button type ="button" onClick={switchSignup}>Switch to Signup</button>
 
         </div>
     );
