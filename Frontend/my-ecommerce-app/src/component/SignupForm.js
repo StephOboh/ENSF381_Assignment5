@@ -14,7 +14,6 @@ const SignupForm = ({switchLogin}) => {
     return (
         <div>
             <h2>Signup</h2>
-            {/* change so it will be hidden until the username is checked in backend  */}
             <div class = "checkUser" id="checkUser" style = "display: none;">
                 <p id="message"></p>
             </div>
