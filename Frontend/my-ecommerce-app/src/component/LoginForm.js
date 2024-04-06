@@ -10,13 +10,37 @@ Description : The login form for an existing user
 // switchSignup function will be written in the actual login page 
 import React from 'react';
 
-
 const LoginForm =({switchSignup}) => {
+    const [formErrors, setFormErrors] = useState({ message: '' });
+
+    const validate = (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+
+        // Check if any form element is empty
+        let formValid = true;
+        formData.forEach((value) => {
+            if (!value.trim()) {
+                formValid = false;
+            }
+        });
+
+        if (formValid == false) {
+            setFormErrors({ message: "All fields are required!" });
+        } 
+        else {
+            // Reset error message if form is valid
+            setFormErrors({ message: '' });
+        }
+    }
+    
 
     return (
         <div>
             <h2>Login</h2>
-            <form action = "add action to check inuputs here"> 
+            {formErrors.message && <p className="error">{formErrors.message}</p>}
+            <form onSubmit={validate}> 
                 <label for="username">Username: </label>
                 <input type ="text" id ="username" name ="username" placeholder ="Enter your username" ></input><br></br>
                 <label for = "password">Password: </label>
@@ -24,7 +48,6 @@ const LoginForm =({switchSignup}) => {
                 <input type ="submit">Login</input><br></br>
             </form>
             <button type ="button" onClick={switchSignup}>Switch to Signup</button>
-
         </div>
     );
 }
