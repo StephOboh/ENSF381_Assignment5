@@ -18,9 +18,9 @@ const LoginForm =({switchSignup}) => {
             <h2>Login</h2>
             <form action = "add action to check inuputs here"> 
                 <label for="username">Username: </label>
-                <input type ="text" id ="username" name ="username" placeholder ="Enter your username" required></input><br></br>
+                <input type ="text" id ="username" name ="username" placeholder ="Enter your username" ></input><br></br>
                 <label for = "password">Password: </label>
-                <input type ="password" id ="password" name = "password" placeholder='Enter your password' required></input><br></br>
+                <input type ="password" id ="password" name = "password" placeholder='Enter your password' ></input><br></br>
                 <input type ="submit">Login</input><br></br>
             </form>
             <button type ="button" onClick={switchSignup}>Switch to Signup</button>

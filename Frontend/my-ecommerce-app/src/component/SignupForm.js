@@ -21,13 +21,13 @@ const SignupForm = ({switchLogin}) => {
 
             <form action = "add action to check inuputs here"> 
                 <label for="username">Username: </label>
-                <input type ="text" id ="username" name ="username" placeholder ="Enter your username" required></input><br></br>
+                <input type ="text" id ="username" name ="username" placeholder ="Enter your username" ></input><br></br>
                 <label for = "password">Password: </label>
-                <input type ="password" id ="password" name = "password" placeholder='Enter your password' required></input><br></br>
+                <input type ="password" id ="password" name = "password" placeholder='Enter your password' ></input><br></br>
                 <label for = "confirmPwd">Confirm Password: </label>
-                <input type ="password" id ="confirmPwd" name = "confirmPwd" placeholder='Confirm your password' required></input><br></br>
+                <input type ="password" id ="confirmPwd" name = "confirmPwd" placeholder='Confirm your password' ></input><br></br>
                 <label for = "email">Email: </label>
-                <input type ="email" id ="email" name = "email" placeholder='Enter your Email8' required></input><br></br>
+                <input type ="email" id ="email" name = "email" placeholder='Enter your Email8' ></input><br></br>
                 <input type ="submit">Signup</input><br></br>
             </form>
             <button type ="button" onClick={switchLogin}>Switch to Login</button>
