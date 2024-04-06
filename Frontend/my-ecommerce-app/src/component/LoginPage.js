@@ -7,24 +7,35 @@ Submission  : April 7, 2024
 Description : Implement the components of the login page and the signup page
 =========================================================
 */
-import React from 'react';
+
+import React, { useState } from 'react';
 import Header from './Header';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import Footer from './Footer';
-import LoginForm from './LoginPage';
 
+const LoginPage = () => {
+    const [showLoginForm, setShowLoginForm] = useState(true);
 
-const LoginPage =() => {
+    const switchToSignup = () => {
+        setShowLoginForm(false);
+    };
+
+    const switchToLogin = () => {
+        setShowLoginForm(true);
+    };
 
     return (
         <div>
             <Header />
-            <LoginForm />
+            {showLoginForm ? 
+                <LoginForm switchToSignup={switchToSignup} /> : 
+                <SignupForm switchToLogin={switchToLogin} />
+            }
             <Footer />
         </div>
-
     );
 }
 
 export default LoginPage;
-
 
