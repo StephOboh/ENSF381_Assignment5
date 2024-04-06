@@ -11,6 +11,7 @@ Description : The signup form for a new user
 import React from 'react';
 
 const SignupForm = ({switchLogin}) => {
+//  add a way to check if the password and confirmm password is the same BEFORE submitting
     return (
         <div>
             <h2>Signup</h2>

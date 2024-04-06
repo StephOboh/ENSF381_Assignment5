@@ -22,7 +22,7 @@ const Header = () =>{
         <nav className="navHeader">
           <Link to="/" >Home</Link> 
           <Link to="/products" >Products</Link>
-          <Link to="/Login" >Login</Link> 
+          <Link to="/login" >Login</Link> 
         </nav>
     </div>
   );
