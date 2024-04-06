@@ -27,21 +27,40 @@ Description : Sets up routes for Homepage and ProductPage
 
 // export default App;
 
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; 
-import Homepage from './component/Homepage';
-import Productpage from './component/Productpage';
-import LoginPage from './component/LoginPage';
+import './App.css';
+import React, { createContext, useContext, useState } from 'react';
+import Homepage from './component/Homepage.js';
+import Productpage from './component/Productpage.js';
+import Loginpage from './component/Loginpage.js';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+
+const AuthContext = createContext();
+export const useAuthContext = () => useContext(AuthContext);
+export const AuthProvider = ({ children }) => {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  return(
+    <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const checkLoggedIn = () => {
+    return isLoggedIn;
+  };
   return (
-      <Router> 
-        <Routes>
-          <Route path="/" element={<Homepage />} /> 
-          <Route path="/products" element={<Productpage />}/>
-          <Route path= "/login" element ={<LoginPage />} />
-        </Routes>
-      </Router>
+    <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Loginpage />} />
+        <Route path="/products" element={<Productpage />} />
+      </Routes>
+    </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -1,10 +1,9 @@
-from flask import Flask, request, jsonify, redirect, url_for
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)#, origins=["http://localhost:5000"])
 
-# Initialize an empty list to store user data
 users = []
 
 products = [
@@ -80,61 +79,39 @@ products = [
     }
 ]
 
-# User Registration API endpoint
 @app.route('/signup', methods=['POST'])
 def register():
-    # Get data from the request body
-    data = request.json
-    
-    # Extract username, password, and email from the data
-    username = data.get('username')
-    password = data.get('password')
-    email = data.get('email')
-    
-    # Check if the username already exists
-    for user in users:
-        if user['username'] == username:
-            return jsonify({'error': 'Username already exists'}), 400
-    
-    # Create a new user dictionary
-    new_user = {
-        'username': username,
-        'password': password,
-        'email': email
-    }
-    
-    # Add the new user to the list of users
-    users.append(new_user)
-    
-    # Return success message
-    return jsonify({'message': 'User registered successfully'}), 201
+    information = request.json
+    username = information.get('username')
+    password = information.get('password')
+    email = information.get('email')
+    if any(user['username'] == username for user in users):
+        return jsonify({'message': 'This username already exists'})
+    users.append({'username': username, 'password': password, 'email': email})
+    return jsonify({'message': 'This user has been successfully registered'})
 
-# User Authentication API endpoint
 @app.route('/login', methods=['POST'])
-def login():
-    # Get data from the request body
-    data = request.json
-    
-    # Extract username and password from the data
-    username = data.get('username')
-    password = data.get('password')
-    
-    # Check if the entered username and password are correct
-    for user in users:
-        if user['username'] == username and user['password'] == password:
-            # Redirect user to the Product page upon successful login
-            return redirect(url_for('product_page'))
-    
-    # If username or password is incorrect, display error message
-    return jsonify({'error': 'Invalid username or password'}), 401
+def registerUser():
+    new_user = request.get_json()
+    if "email" in new_user:
+        new_username = new_user.get('username')
+        for user in users:
+            if user['username'] == new_username:
+                return jsonify({"errorMessage": "This username has already been taken"})
+        users.append(new_user)
+        return jsonify({"errorMessage": "Signup was successful!"})
+    else:
+        test_username = new_user.get('username')
+        test_password = new_user.get('password')
+        for user in users:
+            print(user)
+            if user['username'] == test_username and user['password'] == test_password:
+                return(jsonify({"authenticated": True, "authMessage": "Authentication was successful"}))
+        return jsonify({"authenticated": False, "authMessage": "The username or password is incorrect"})
 
-# Product page route
 @app.route('/products', methods=['GET'])
-def product_page():
-    # Placeholder for the product page logic
-    return products # 'Product page'
+def productsinfo():
+    return products
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
+    app.run()

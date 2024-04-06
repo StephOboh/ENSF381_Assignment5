@@ -8,83 +8,67 @@ Description : Handles product management and cart functionality
 =========================================================
 */
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './Header';
 import ProductList from './ProductList';
 import Cart from './Cart';
 import Footer from './Footer';
-import productsData from '../data/products';
+import {useNavigate} from 'react-router-dom';
+import { useAuthContext } from '../App.js';
 
-const ProductPage = () => {
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+function ProductPage() {
+  const [cart, setCart] = useState([]);
+  const {authenticated, setAuthenticated} = useAuthContext();
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if (!authenticated){
+        navigate(`/login`);
+    }
+},[authenticated, navigate])
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart'));
+    if (storedCart && storedCart.length > 0) {
+      setCart(storedCart);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
-    const updatedCart = [...cart];
-    const existingItemIndex = updatedCart.findIndex(item => item.id === product.id);
-
-    if (existingItemIndex !== -1) {
-      updatedCart[existingItemIndex].quantity += 1;
+  function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+    if (existingItem) {
+      setCart(cart.map(item => item.id === product.id ? {...item, quantity: item.quantity + 1} : item));
     } else {
-      updatedCart.push({ ...product, quantity: 1 });
+      setCart([...cart, {...product, quantity: 1}]);
     }
+  }
 
-    setCart(updatedCart);
-  };
-
-  const removeFromCart = (productId) => {
-    const updatedCart = [...cart];
-    const existingItemIndex = updatedCart.findIndex(item => item.id === productId);
-
-    if (existingItemIndex !== -1) {
-      if (updatedCart[existingItemIndex].quantity > 1) {
-        updatedCart[existingItemIndex].quantity -= 1;
-      } else {
-        updatedCart.splice(existingItemIndex, 1);
+  function removeFromCart(item) {
+    const updatedCart = cart.map(cartItem => {
+      if (cartItem.id === item.id) {
+        return { ...cartItem, quantity: cartItem.quantity - 1 };
       }
-      setCart(updatedCart);
-    }
-  };
+      return cartItem;
+    }).filter(cartItem => cartItem.quantity > 0);
+    setCart(updatedCart);
+  }
 
   return (
     <div className="product-page">
       <Header />
-
-      <table style={{ width: '100%' }}>
+      <table style={{width:"100%"}}>
         <tr>
-          <td style={{ width: '70%' }}>
-            <ProductList products={productsData} addToCart={addToCart} />
-          </td>
-          <td style={{ width: '30%', verticalAlign: 'top' }}>
-            <Cart cart={cart} removeFromCart={removeFromCart} />
-          </td>
+          <td style={{verticalAlign:'top'}}><ProductList addToCart={addToCart} /></td>
+          <td style={{verticalAlign:'top'}}><Cart cart={cart} removeFromCart={removeFromCart} /></td>
         </tr>
       </table>
-
       <Footer />
     </div>
   );
-};
+}
 
 export default ProductPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
