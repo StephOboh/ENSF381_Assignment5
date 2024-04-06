@@ -8,7 +8,7 @@ Description : The login form for an existing user
 =========================================================
 */
 // switchSignup function will be written in the actual login page 
-import React from 'react';
+import React, {useState} from 'react';
 
 const LoginForm =({switchSignup}) => {
     const [formErrors, setFormErrors] = useState({ message: '' });

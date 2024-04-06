@@ -8,7 +8,7 @@ Description : The signup form for a new user
 =========================================================
 */
 
-import React from 'react';
+import React, {useState} from 'react';
 
 
 const SignupForm = ({switchLogin}) => {
