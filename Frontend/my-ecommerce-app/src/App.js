@@ -8,8 +8,27 @@ Description : Sets up routes for Homepage and ProductPage
 =========================================================
 */
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+// import Homepage from './component/Homepage';
+// import Productpage from './component/Productpage';
+
+// function App() {
+//   return (
+//       <Router> 
+//         <Routes>
+//           <Route path="/" element={<Homepage />} /> 
+//           <Route path="/products" element={<Productpage />}/>
+//         </Routes>
+//       </Router>
+
+//   );
+// }
+
+// export default App;
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; 
 import Homepage from './component/Homepage';
 import Productpage from './component/Productpage';
 import LoginPage from './component/LoginPage';
@@ -23,7 +42,6 @@ function App() {
           <Route path= "/login" element ={<LoginPage />} />
         </Routes>
       </Router>
-
   );
 }
 
