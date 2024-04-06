@@ -33,7 +33,7 @@ const LoginForm =({switchSignup}) => {
             // Reset error message if form is valid
             setFormErrors({ message: '' });
         }
-    }
+    };
     
 
     return (
