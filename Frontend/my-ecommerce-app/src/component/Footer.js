@@ -1,12 +1,13 @@
 /*
 =========================================================
 Name        : Footer.js
-Assignment  : Assignment 4
+Assignment  : Assignment 5
 Author(s)   : Sarah Yip (UCID: 30174831), Stephenie Oboh (UCID: 30151629)
-Submission  : March 24, 2024
+Submission  : April 7, 2024
 Description : Footer for company website
 =========================================================
 */
+
 import React from 'react';
 import './Footer.css'; 
 

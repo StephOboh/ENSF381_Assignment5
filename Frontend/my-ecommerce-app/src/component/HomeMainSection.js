@@ -1,9 +1,9 @@
 /*
 =========================================================
 Name        : HomeMainSection.js
-Assignment  : Assignment 4
+Assignment  : Assignment 5
 Author(s)   : Sarah Yip (UCID: 30174831), Stephenie Oboh (UCID: 30151629)
-Submission  : March 24, 2024
+Submission  : April 7, 2024
 Description : Main Home for Header Component
 =========================================================
 */
@@ -12,8 +12,6 @@ import React, {useState, useEffect} from 'react';
 import './HomeMainSection.css';
 import { Link } from 'react-router-dom'; // needed to include DOM links for button
 import reviews from '../data/reviews'; // Import the reviews array
-
-
 
 const HomeMainSection = () =>{
     const [DisplayedReviews, setDisplayedReviews] = useState([]);

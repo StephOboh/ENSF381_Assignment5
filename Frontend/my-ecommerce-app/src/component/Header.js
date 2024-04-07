@@ -1,16 +1,16 @@
 /*
 =========================================================
 Name        : Header.js
-Assignment  : Assignment 4
+Assignment  : Assignment 5
 Author(s)   : Sarah Yip (UCID: 30174831), Stephenie Oboh (UCID: 30151629)
-Submission  : March 24, 2024
+Submission  : April 7, 2024
 Description : Header Component for Company Website
 =========================================================
 */
+
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Header.css'; // import link to styling sheet 
-
 
 const Header = () =>{
   return (
