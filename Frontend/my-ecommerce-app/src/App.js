@@ -13,7 +13,7 @@ import React, { createContext, useContext, useState } from 'react';
 import Homepage from './component/Homepage.js';
 import Productpage from './component/Productpage.js';
 import Loginpage from './component/LoginPage.js';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 const AuthContext = createContext();
 export const useAuthContext = () => useContext(AuthContext);
@@ -28,10 +28,6 @@ export const AuthProvider = ({ children }) => {
 };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const checkLoggedIn = () => {
-    return isLoggedIn;
-  };
   return (
     <AuthProvider>
     <BrowserRouter>

@@ -18,7 +18,7 @@ import { useAuthContext } from '../App.js';
 
 function ProductPage() {
   const [cart, setCart] = useState([]);
-  const {authenticated, setAuthenticated} = useAuthContext();
+  const {authenticated} = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(()=> {
