@@ -31,7 +31,7 @@ import './App.css';
 import React, { createContext, useContext, useState } from 'react';
 import Homepage from './component/Homepage.js';
 import Productpage from './component/Productpage.js';
-import Loginpage from './component/Loginpage.js';
+import Loginpage from './component/LoginPage.js';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 const AuthContext = createContext();
