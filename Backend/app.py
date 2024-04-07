@@ -261,7 +261,7 @@ def login():
         if user['username'] == username and user['password'] == password:
             return jsonify({'message': 'Login successful'}), 200
 
-    return jsonify({'message': 'Invalid username or password'}), 401
+    return jsonify({'message': 'Username and Password are incorrect'}), 401
 
 @app.route('/products', methods=['GET'])
 def get_products():
