@@ -13,15 +13,16 @@ import Header from './Header';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import Footer from './Footer';
+import './LoginPage.css';
 
 const LoginPage = () => {
     const [showLoginForm, setShowLoginForm] = useState(true);
 
-    const switchToSignup = () => {
+    const switchSignup = () => {
         setShowLoginForm(false);
     };
 
-    const switchToLogin = () => {
+    const switchLogin = () => {
         setShowLoginForm(true);
     };
 
@@ -29,8 +30,8 @@ const LoginPage = () => {
         <div>
             <Header />
             {showLoginForm ? 
-                <LoginForm switchToSignup={switchToSignup} /> : 
-                <SignupForm switchToLogin={switchToLogin} />
+                <LoginForm switchSignup={switchSignup} /> : 
+                <SignupForm switchLogin={switchLogin} />
             }
             <Footer />
         </div>
