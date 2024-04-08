@@ -38,7 +38,7 @@ const HomeMainSection = () =>{
                     </p>
                 </div>
                 <button className="shop-now-button">
-                    <Link to="/ProductPage">Shop Now</Link>
+                    <Link to="/products">Shop Now</Link>
                 </button>
 
                 <div className='customerReviews'>
