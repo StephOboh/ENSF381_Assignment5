@@ -110,9 +110,9 @@ def login():
 
     for user in users:
         if user['username'] == username and user['password'] == password:
-            return jsonify({'message': 'Login successful'}), 200
+            return jsonify({'message': 'Login successful', 'authenticated': True}), 200
 
-    return jsonify({'message': 'Username and Password are incorrect'}), 401
+    return jsonify({'message': 'Username and Password are incorrect', 'authenticated': False}), 401
 
 @app.route('/products', methods=['GET'])
 def get_products():

@@ -10,13 +10,15 @@ Description : The signup form for a new user
 
 import React, { useState } from 'react';
 import './LoginPage.css';
+import LoginForm from './LoginForm'; // Import the LoginForm component
 
-const SignupForm = ({ switchLogin }) => {
+const SignupForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const [formErrors, setFormErrors] = useState({ message: '' });
+  const [showLogin, setShowLogin] = useState(false); // Define the showLogin state variable
 
   const validate = async (e) => {
     e.preventDefault();
@@ -56,6 +58,14 @@ const SignupForm = ({ switchLogin }) => {
       }
     }
   };
+
+  const gotoLoginForm = () => {
+    setShowLogin(true); 
+  };
+
+  if (showLogin) {
+    return <LoginForm />;
+  }
 
   return (
     <div>
@@ -100,7 +110,7 @@ const SignupForm = ({ switchLogin }) => {
         /><br />
         <button type="submit">Signup</button><br />
       </form>
-      <button type="button" onClick={switchLogin}>Switch to Login</button>
+      <button type="button" onClick={gotoLoginForm}>Switch to Login</button>
     </div>
   );
 }
