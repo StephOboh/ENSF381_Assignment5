@@ -22,7 +22,7 @@ function ProductPage() {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    if (authenticated){
+    if (!authenticated){
         navigate(`/login`);
     }
 },[authenticated, navigate])
